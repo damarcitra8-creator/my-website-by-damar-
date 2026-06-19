@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Pribadi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- RESET & BASE STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f0f8ff; /* Latar belakang biru muda banget */
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVBAR --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(240, 248, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 10px;
+            gap: 12px;
+            flex-wrap: wrap; /* Mencegah menu terpotong di HP */
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #00aeef;
+            font-weight: 800;
+            font-size: 13px;
+            text-transform: uppercase;
+            transition: transform 0.2s, color 0.2s;
+        }
+
+        nav a:active {
+            transform: scale(0.9);
+            color: #0086b3;
+        }
+
+        /* --- SECTION STRUCTURE --- */
+        section {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 100px 20px 40px 20px; /* Padding atas ditambah agar tidak tertutup navbar */
+        }
+
+        /* --- CARD STYLE --- */
+        .card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 360px; /* Ukuran pas untuk layar HP */
+            border-radius: 30px;
+            padding: 35px 25px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 174, 239, 0.1);
+            border: 1px solid rgba(0, 174, 239, 0.05);
+            animation: fadeInUp 0.6s ease-out;
+            word-wrap: break-word; /* Mencegah teks meluber keluar */
+        }
+
+        /* --- TEXT STYLES (BOLD & NO CLIPPING) --- */
+        h1 {
+            color: #00aeef;
+            font-size: 28px;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            color: #00aeef;
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        p {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        /* --- FIX UNTUK FOTO AGAR TIDAK BERANTAKAN --- */
+        .wish-img {
+            display: block;      /* Memaksa teks di bawahnya mengalah turun */
+            width: 100%;         /* Lebar penuh menyesuaikan kotak kartu */
+            max-height: 250px;   /* Tinggi maksimal foto biar pas di HP */
+            object-fit: cover;   /* Foto otomatis menyesuaikan kotak tanpa gepeng */
+            border-radius: 20px; /* Sudut melengkung halus */
+            border: 3px solid #00aeef;
+            margin: 0 auto 20px auto; /* Posisi di tengah (center) & ada jarak ke bawah */
+        }
+
+        /* --- BUTTONS & LINKS --- */
+        .btn-main {
+            display: inline-block;
+            background: #00aeef;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px 40px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 174, 239, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .btn-main:active {
+            transform: scale(0.95);
+            background: #0086b3;
+        }
+
+        .social-link {
+            display: block;
+            background: #f0f8ff;
+            color: #00aeef;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 15px;
+            margin-bottom: 10px;
+            font-weight: 800;
+            border: 2px solid #00aeef;
+            transition: all 0.2s;
+        }
+
+        .social-link:active {
+            background: #00aeef;
+            color: #ffffff;
+            transform: scale(0.98);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #ffffff;
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #7f8c8d;
+            border-top: 2px solid #e1f5fe;
+        }
+
+        footer span {
+            color: #00aeef;
+            font-weight: 800;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .pulse {
+            animation: pulseAnimation 2s infinite;
+        }
+
+        @keyframes pulseAnimation {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="#beranda" onclick="playClickAnimation(this)">Beranda</a>
+            <a href="#wish" onclick="playClickAnimation(this)">My Wish</a>
+            <a href="#hobi" onclick="playClickAnimation(this)">Hobi</a>
+            <a href="#cita" onclick="playClickAnimation(this)">Cita-Cita</a>
+            <a href="#kontak" onclick="playClickAnimation(this)">Kontak</a>
+        </nav>
+    </header>
+
+    <section id="beranda">
+        <div class="card pulse">
+            <h1>SELAMAT<br>DATANG</h1>
+            <p>Ini adalah Website Pribadi Saya.</p>
+            <p>Terima kasih sudah berkunjung 😊</p>
+            <br>
+            <a href="#wish" class="btn-main" onclick="playClickAnimation(this)">Mulai</a>
+        </div>
+    </section>
+
+    <section id="wish">
+        <div class="card">
+            <h2>MY WISH</h2>
+            <img src="wish.jpg" alt="My Wish" class="wish-img">
+            <p>Semoga semua impian dan target saya bisa tercapai dengan lancar dan sukses!</p>
+        </div>
+    </section>
+
+    <section id="hobi">
+        <div class="card">
+            <h2>HOBI</h2>
+            <p>Bermain Game, Membuat Konten Kreatif di TikTok, serta Belajar Coding Web Design!</p>
+        </div>
+    </section>
+
+    <section id="cita">
+        <div class="card">
+            <h2>CITA-CITA</h2>
+            <p>Menjadi seorang Content Creator sukses, Web Developer profesional,Insinyur dan Programmer hebat yang bisa membahagiakan orang tua.</p>
+        </div>
+    </section>
+
+    <section id="kontak">
+        <div class="card">
+            <h2>HUBUNGI SAYA</h2>
+            <p>Silakan ikuti akun media sosial atau hubungi saya langsung di bawah ini:</p>
+            
+            <a href="https://www.tiktok.com/@hayabusa.4583" target="_blank" class="social-link" onclick="playClickAnimation(this)">
+                TikTok: hayabusa.4583
+            </a>
+            
+            <a href="https://wa.me/6288269979650" target="_blank" class="social-link" onclick="playClickAnimation(this)">
+                WhatsApp: 088269979650
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p style="font-size: 13px; margin-bottom: 5px;">Dibuat oleh: <span>Damar</span></p>
+        <p style="font-size: 11px; font-weight: 700; color: #a0aab2;">Mohon maaf apabila ada kesalahan kata atau kekurangan pada website ini.</p>
+    </footer>
+
+    <script>
+        function playClickAnimation(element) {
+            element.style.transform = "scale(0.9)";
+            setTimeout(() => {
+                element.style.transform = "scale(1)";
+            }, 150);
+        }
+    </script>
+
+</body>
+</html>
